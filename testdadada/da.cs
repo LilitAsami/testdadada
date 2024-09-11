@@ -1,23 +1,21 @@
 ﻿using System;
-using System.Collections.Generic;
 
 class Program
 {
+    public static (double sumOddIndices, double productNegative) ProcessArray(double[] arr)
     {
         double sumOddIndices = 0;  // Сумма элементов с нечётными индексами
         double productNegative = 1; // Произведение отрицательных элементов
-        List<string> errors = new List<string>(); // Список ошибок
 
-
-        bool hasNegative = false; // Флаг для проверки наличия отрицательных элементов
+        bool hasNegative = false;
 
         for (int i = 0; i < arr.Length; i++)
         {
+            // Сумма  элементов с нечётными индексами
             if (i % 2 != 0)
             {
                 sumOddIndices += arr[i];
             }
-
             // Произведение отрицательных элементов
             if (arr[i] < 0)
             {
@@ -25,6 +23,7 @@ class Program
                 hasNegative = true;
             }
         }
+        return (sumOddIndices, productNegative);
     }
 
     public static void Main(string[] args)
@@ -39,14 +38,5 @@ class Program
         Console.WriteLine($"Произведение отрицательных элементов: {result.productNegative}");
         Console.ReadLine();
 
-        // Если есть ошибки, выводим их
-        if (result.errors.Count > 0)
-        {
-            Console.WriteLine("Ошибки:");
-            foreach (var error in result.errors)
-            {
-                Console.WriteLine(error);
-            }
-        }
     }
 }
